@@ -3,5 +3,37 @@
 @tailwind utilities;
 
 body {
-  @apply bg-emerald-200 sm:min-h-screen sm:bg-gradient-to-br sm:from-emerald-200 sm:to-emerald-300;
+  @apply bg-sky-700 sm:min-h-screen sm:bg-gradient-to-br text-[#F5F5F5] sm:from-sky-700 sm:to-sky-300 sm:flex sm:justify-center;
+}
+
+input,
+select {
+  color: black;
+}
+
+input,
+select,
+button {
+  padding: 5px;
+  border-radius: 2px;
+}
+
+input[type='color'] {
+  appearance: none;
+  width: 30px;
+  height: 30px;
+
+  border: none;
+
+  cursor: pointer;
+  background-color: transparent;
+}
+
+input[type='color']::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+
+input[type='color']::-webkit-color-swatch {
+  border-radius: 2px;
+  border: none;
 }

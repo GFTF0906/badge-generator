@@ -1,4 +1,5 @@
-export const defaultValues = {
+import { TFormSchema } from './../types/FormSchemaType';
+export const defaultValues: TFormSchema = {
   badgeStyle: 'for-the-badge',
   badgeText: 'TypeScript',
   iconName: 'TypeScript',

@@ -1,4 +1,5 @@
 export type TElementWithContent = {
-  text: string;
+  text?: string;
   className?: string;
+  icon?: JSX.Element;
 };

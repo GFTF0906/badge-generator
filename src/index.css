@@ -1,39 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 body {
-  @apply bg-sky-700 sm:min-h-screen sm:bg-gradient-to-br text-[#F5F5F5] sm:from-sky-700 sm:to-sky-300 sm:flex sm:justify-center;
+  @apply bg-[#35184d] sm:min-h-screen sm:flex sm:justify-center text-[#F5F5F5] sm:bg-gradient-to-b sm:from-slate-900 sm:via-[#35184d] sm:to-slate-900 font-Inter;
 }
 
 input,
 select {
-  color: black;
+  @apply text-black border-2 border-[#d1cece];
 }
 
 input,
 select,
 button {
-  padding: 5px;
-  border-radius: 2px;
+  @apply p-[5px] rounded;
 }
 
 input[type='color'] {
-  appearance: none;
-  width: 30px;
-  height: 30px;
-
-  border: none;
-
-  cursor: pointer;
-  background-color: transparent;
+  @apply appearance-none w-10 h-10 border-none cursor-pointer bg-transparent;
 }
 
 input[type='color']::-webkit-color-swatch-wrapper {
-  padding: 0;
+  @apply p-0;
 }
 
 input[type='color']::-webkit-color-swatch {
-  border-radius: 2px;
-  border: none;
+  @apply rounded border-none;
+}
+
+select option {
+  @apply appearance-none text-[#F5F5F5] bg-[#35184d];
+}
+
+select::-ms-expand {
+  display: none;
 }

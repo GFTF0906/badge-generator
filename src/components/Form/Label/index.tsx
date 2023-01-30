@@ -1,8 +1,16 @@
-export const Label = ({ htmlFor, text }: { htmlFor: string; text: string }) => {
+export const Label = ({
+  htmlFor,
+  text,
+  className,
+}: {
+  htmlFor: string;
+  text: string;
+  className?: string;
+}) => {
   return (
     <label
       htmlFor={htmlFor}
-      className="font-medium text-lg"
+      className={`font-semibold text-lg ${className ?? ''}`}
     >
       {text}
     </label>

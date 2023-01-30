@@ -26,7 +26,7 @@ export const LabelInputBox = ({
   errorMessage,
 }: LabelInputBoxProps) => {
   return (
-    <section className="flex flex-col mb-2">
+    <section className="flex flex-col mb-2 py-2">
       <Label
         htmlFor={inputID}
         text={labelText}

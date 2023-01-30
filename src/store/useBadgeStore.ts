@@ -1,7 +1,6 @@
 import { create } from 'zustand';
 import { defaultValues } from '../constants/defaultBadgeValues';
-import { BASE_URL } from './../constants/baseUrl';
-import { formatColor } from './../utils/formatColor';
+import { buildUrl } from '../utils/buildUrl';
 
 type BadgeState = {
   badgeUrl: string;
@@ -16,14 +15,21 @@ export const useBadgeStore = create<BadgeState>()((set) => {
     leftSideColor,
     logoColor,
     rightSideColor,
+    link,
   } = defaultValues;
 
+  const badgeUrl = buildUrl({
+    badgeStyle,
+    badgeText,
+    iconName,
+    leftSideColor,
+    link,
+    logoColor,
+    rightSideColor,
+  });
+
   return {
-    badgeUrl: `${BASE_URL}${badgeText}-000?style=${badgeStyle}&logo=${iconName}&logoColor=${formatColor(
-      logoColor
-    )}&labelColor=${formatColor(leftSideColor)}&color=${formatColor(
-      rightSideColor
-    )}`,
+    badgeUrl,
     setBadgeUrl: (newUrl) => set(() => ({ badgeUrl: newUrl })),
   };
 });

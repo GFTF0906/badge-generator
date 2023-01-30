@@ -1,12 +1,14 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { SubmitHandler, useForm } from 'react-hook-form';
-import { BASE_URL } from '../../constants/baseUrl';
+
 import { useBadgeStore } from '../../store/useBadgeStore';
-import { formSchema, TFormSchema } from '../../types/FormSchemaType';
-import { formatColor } from '../../utils/formatColor';
+
 import { Button } from '../Button';
 import { LabelInputBox } from './LabelInputBox';
 import { LabelSelectBox } from './LabelSelectBox';
+
+import { formSchema, TFormSchema } from '../../types/FormSchemaType';
+import { buildUrl } from '../../utils/buildUrl';
 
 export const FormNewGenerateBadge = () => {
   const setBadgeUrl = useBadgeStore((state) => state.setBadgeUrl);
@@ -14,8 +16,8 @@ export const FormNewGenerateBadge = () => {
   const {
     register,
     handleSubmit,
-    reset,
     formState: { errors },
+    setValue,
   } = useForm<TFormSchema>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -37,22 +39,33 @@ export const FormNewGenerateBadge = () => {
       leftSideColor,
       rightSideColor,
       iconName,
+      link,
     } = data;
 
-    const url = `${BASE_URL}${badgeText}-000?style=${badgeStyle}&logo=${iconName}&logoColor=${formatColor(
-      logoColor
-    )}&labelColor=${formatColor(leftSideColor)}&color=${formatColor(
-      rightSideColor
-    )}`;
-
+    const url = buildUrl({
+      badgeStyle,
+      badgeText,
+      iconName,
+      leftSideColor,
+      link,
+      logoColor,
+      rightSideColor,
+    });
     setBadgeUrl(url);
-    reset();
+
+    setValue('badgeStyle', badgeStyle);
+    setValue('badgeText', badgeText);
+    setValue('logoColor', logoColor);
+    setValue('leftSideColor', leftSideColor);
+    setValue('rightSideColor', rightSideColor);
+    setValue('iconName', iconName);
+    setValue('link', link);
   };
 
   return (
-    <section className="p-6 rounded text-black bg-sky-100">
+    <section className="p-6 rounded text-black border-2 border-[#d4c8c8] shadow-2xl shadow-[#b1a1be3a] bg-[#e8e8e8]">
       <form onSubmit={handleSubmit(onSubmit)}>
-        <section className="sm:grid sm:grid-cols-2 sm:gap-8">
+        <section className="sm:grid sm:grid-cols-2 sm:gap-12">
           <section>
             <LabelInputBox
               inputID="iconName"
@@ -71,7 +84,7 @@ export const FormNewGenerateBadge = () => {
             <LabelInputBox
               inputID="link"
               inputType="text"
-              labelText="Any link you may want the badge to redirect to"
+              labelText="Badge redirect link"
               register={register}
               errorMessage={errors['link']?.message ?? ''}
             />
@@ -108,7 +121,7 @@ export const FormNewGenerateBadge = () => {
         />
         <Button
           text="Generate"
-          className="mt-4 transition-all w-full text-[#F5F5F5] bg-sky-800 hover:bg-opacity-80"
+          className="mt-12 transition-all w-full font-semibold border-2 border-[#cead1a] bg-[#F9DC5C] hover:bg-opacity-90 hover:border-opacity-70"
         />
       </form>
     </section>

@@ -5,7 +5,7 @@ import { Titles } from './components/Titles';
 
 export const App = () => {
   return (
-    <main className="sm:mt-40 sm:flex sm:flex-col sm:items-center sm:justify-center sm:gap-4">
+    <main className="sm:mt-36 sm:ml-40 sm:flex sm:flex-col sm:items-center sm:justify-center sm:gap-4">
       <CommonBadgesBox />
 
       <Titles />

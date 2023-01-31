@@ -1,5 +1,4 @@
-import { zodResolver } from '@hookform/resolvers/zod';
-import { SubmitHandler, useForm } from 'react-hook-form';
+import { SubmitHandler } from 'react-hook-form';
 
 import { useBadgeStore } from '../../store/useBadgeStore';
 
@@ -7,29 +6,13 @@ import { Button } from '../Button';
 import { LabelInputBox } from './LabelInputBox';
 import { LabelSelectBox } from './LabelSelectBox';
 
-import { formSchema, TFormSchema } from '../../types/FormSchemaType';
+import { useBadgeForm } from '../../hooks/useBadgeForm';
+import { TFormSchema } from '../../types/FormSchemaType';
 import { buildUrl } from '../../utils/buildUrl';
 
 export const FormNewGenerateBadge = () => {
   const setBadgeUrl = useBadgeStore((state) => state.setBadgeUrl);
-
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-    setValue,
-  } = useForm<TFormSchema>({
-    resolver: zodResolver(formSchema),
-    defaultValues: {
-      badgeStyle: 'for-the-badge',
-      badgeText: 'TypeScript',
-      iconName: 'TypeScript',
-      logoColor: '#4470b3',
-      leftSideColor: '#a7cbf1',
-      rightSideColor: '#363695',
-      link: 'https://typescriptlang.org',
-    },
-  });
+  const { register, handleSubmit, errors, setValue } = useBadgeForm();
 
   const onSubmit: SubmitHandler<TFormSchema> = (data) => {
     const {

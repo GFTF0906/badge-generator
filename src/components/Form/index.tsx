@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { SubmitHandler } from 'react-hook-form';
 
 import { useBadgeStore } from '../../store/useBadgeStore';
@@ -6,15 +7,26 @@ import { Button } from '../Button';
 import { LabelInputBox } from './LabelInputBox';
 import { LabelSelectBox } from './LabelSelectBox';
 
+import { defaultValues } from '../../constants/defaultBadgeValues';
+import { setFormData } from '../../helper/setFormData';
 import { useBadgeForm } from '../../hooks/useBadgeForm';
+import { useFormDataStore } from '../../store/useFormDataStore';
+import { useRandomIndexStore } from '../../store/useRandomIndexStore';
 import { TFormSchema } from '../../types/FormSchemaType';
 import { buildUrl } from '../../utils/buildUrl';
 
 export const FormNewGenerateBadge = () => {
+  const formDataFromStore = useFormDataStore((state) => state.formData);
+  const randomIndex = useRandomIndexStore((state) => state.randomIndex);
+
+  const setFormDataFromStore = useFormDataStore((state) => state.setFormData);
   const setBadgeUrl = useBadgeStore((state) => state.setBadgeUrl);
+
   const { register, handleSubmit, errors, setValue } = useBadgeForm();
 
   const onSubmit: SubmitHandler<TFormSchema> = (data) => {
+    setFormDataFromStore(data);
+
     const {
       badgeStyle,
       badgeText,
@@ -36,17 +48,19 @@ export const FormNewGenerateBadge = () => {
     });
     setBadgeUrl(url);
 
-    setValue('badgeStyle', badgeStyle);
-    setValue('badgeText', badgeText);
-    setValue('logoColor', logoColor);
-    setValue('leftSideColor', leftSideColor);
-    setValue('rightSideColor', rightSideColor);
-    setValue('iconName', iconName);
-    setValue('link', link);
+    setFormData({ setValue, formDataFromStore });
   };
 
+  useEffect(() => {
+    setFormDataFromStore(defaultValues[randomIndex]);
+  }, []);
+
+  useEffect(() => {
+    setFormData({ setValue, formDataFromStore });
+  }, [formDataFromStore]);
+
   return (
-    <section className="p-6 rounded text-black border-2 border-[#d4c8c8] shadow-2xl shadow-[#b1a1be3a] bg-[#e8e8e8]">
+    <section className="rounded border-2 border-gray-400 bg-gray-100 p-6 text-black shadow-2xl shadow-[#b1a1be3a]">
       <form onSubmit={handleSubmit(onSubmit)}>
         <section className="sm:grid sm:grid-cols-2 sm:gap-12">
           <section>
@@ -104,7 +118,7 @@ export const FormNewGenerateBadge = () => {
         />
         <Button
           text="Generate"
-          className="mt-12 transition-all w-full font-semibold border-2 border-[#cead1a] bg-[#F9DC5C] hover:bg-opacity-90 hover:border-opacity-70"
+          className="mt-12 w-full border-2 border-[#cead1a] bg-[#F9DC5C] font-semibold transition-all hover:border-opacity-70 hover:bg-opacity-90"
         />
       </form>
     </section>

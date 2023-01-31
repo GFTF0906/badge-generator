@@ -1,29 +1,29 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
-import { defaultValues } from '../constants/defaultBadgeValues';
-import { useRandomIndexStore } from '../store/useRandomIndexStore';
+import { useFormDataStore } from '../store/useFormDataStore';
 import { formSchema, TFormSchema } from '../types/FormSchemaType';
 
 export const useBadgeForm = () => {
-  const randomIndex = useRandomIndexStore((state) => state.randomIndex);
+  const formDataFromStore = useFormDataStore((state) => state.formData);
 
   const {
     register,
     handleSubmit,
     formState: { errors },
     setValue,
+    getValues,
   } = useForm<TFormSchema>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      badgeStyle: defaultValues[randomIndex].badgeStyle,
-      badgeText: defaultValues[randomIndex].badgeText,
-      iconName: defaultValues[randomIndex].iconName,
-      logoColor: defaultValues[randomIndex].logoColor,
-      leftSideColor: defaultValues[randomIndex].leftSideColor,
-      rightSideColor: defaultValues[randomIndex].rightSideColor,
-      link: defaultValues[randomIndex].link,
+      badgeStyle: formDataFromStore.badgeStyle,
+      badgeText: formDataFromStore.badgeText,
+      iconName: formDataFromStore.iconName,
+      logoColor: formDataFromStore.logoColor,
+      leftSideColor: formDataFromStore.leftSideColor,
+      rightSideColor: formDataFromStore.rightSideColor,
+      link: formDataFromStore.link,
     },
   });
 
-  return { register, handleSubmit, errors, setValue };
+  return { register, handleSubmit, errors, getValues, setValue };
 };

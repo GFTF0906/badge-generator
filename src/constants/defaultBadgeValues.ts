@@ -29,7 +29,7 @@ export const defaultValues: TFormSchema[] = [
   },
   {
     badgeStyle: 'for-the-badge',
-    badgeText: 'MARKDOWN',
+    badgeText: 'Markdown',
     iconName: 'markdown',
     logoColor: '#000000',
     leftSideColor: '#DDDDDD',
@@ -74,7 +74,7 @@ export const defaultValues: TFormSchema[] = [
   },
   {
     badgeStyle: 'for-the-badge',
-    badgeText: 'git',
+    badgeText: 'Git',
     iconName: 'git',
     logoColor: '#F54D27',
     leftSideColor: '#453D36',
@@ -83,7 +83,7 @@ export const defaultValues: TFormSchema[] = [
   },
   {
     badgeStyle: 'for-the-badge',
-    badgeText: 'sass',
+    badgeText: 'Sass',
     iconName: 'sass',
     logoColor: '#C76494',
     leftSideColor: '#874464',
@@ -92,7 +92,7 @@ export const defaultValues: TFormSchema[] = [
   },
   {
     badgeStyle: 'for-the-badge',
-    badgeText: 'tailwindcss',
+    badgeText: 'Tailwindcss',
     iconName: 'tailwindcss',
     logoColor: '#01B7D6',
     leftSideColor: '#004A57',
@@ -101,7 +101,7 @@ export const defaultValues: TFormSchema[] = [
   },
   {
     badgeStyle: 'for-the-badge',
-    badgeText: 'npm',
+    badgeText: 'NPM',
     iconName: 'npm',
     logoColor: '#CB3837',
     leftSideColor: '#8C2626',
@@ -110,7 +110,7 @@ export const defaultValues: TFormSchema[] = [
   },
   {
     badgeStyle: 'for-the-badge',
-    badgeText: 'yarn',
+    badgeText: 'Yarn',
     iconName: 'yarn',
     logoColor: '#2B8AB5',
     leftSideColor: '#1C5975',
@@ -119,7 +119,7 @@ export const defaultValues: TFormSchema[] = [
   },
   {
     badgeStyle: 'for-the-badge',
-    badgeText: 'pnpm',
+    badgeText: 'PNPM',
     iconName: 'pnpm',
     logoColor: '#F1A800',
     leftSideColor: '#4C4C4C',
@@ -128,7 +128,7 @@ export const defaultValues: TFormSchema[] = [
   },
   {
     badgeStyle: 'for-the-badge',
-    badgeText: 'mongodb',
+    badgeText: 'Mongodb',
     iconName: 'mongodb',
     logoColor: '#00ED64',
     leftSideColor: '#001E2B',
@@ -137,7 +137,7 @@ export const defaultValues: TFormSchema[] = [
   },
   {
     badgeStyle: 'for-the-badge',
-    badgeText: 'prisma',
+    badgeText: 'Prisma',
     iconName: 'prisma',
     logoColor: '#DDDDDD',
     leftSideColor: '#0C3249',
@@ -146,7 +146,7 @@ export const defaultValues: TFormSchema[] = [
   },
   {
     badgeStyle: 'for-the-badge',
-    badgeText: 'rust',
+    badgeText: 'Rust',
     iconName: 'rust',
     logoColor: '#A53C15',
     leftSideColor: '#66250D',
@@ -155,7 +155,7 @@ export const defaultValues: TFormSchema[] = [
   },
   {
     badgeStyle: 'for-the-badge',
-    badgeText: 'python',
+    badgeText: 'Python',
     iconName: 'python',
     logoColor: '#C9B559',
     leftSideColor: '#142736',
@@ -164,7 +164,7 @@ export const defaultValues: TFormSchema[] = [
   },
   {
     badgeStyle: 'for-the-badge',
-    badgeText: 'php',
+    badgeText: 'PHP',
     iconName: 'php',
     logoColor: '#484C89',
     leftSideColor: '#272A4A',

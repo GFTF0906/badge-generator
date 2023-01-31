@@ -1,13 +1,16 @@
 import { create } from 'zustand';
 import { defaultValues } from '../constants/defaultBadgeValues';
 import { buildUrl } from '../utils/buildUrl';
+import { useRandomIndexStore } from './useRandomIndexStore';
 
-type BadgeState = {
+type TBadgeState = {
   badgeUrl: string;
   setBadgeUrl: (newUrl: string) => void;
 };
 
-export const useBadgeStore = create<BadgeState>()((set) => {
+export const useBadgeStore = create<TBadgeState>()((set) => {
+  const randomIndex = useRandomIndexStore.getState().randomIndex;
+
   const {
     badgeStyle,
     badgeText,
@@ -16,7 +19,7 @@ export const useBadgeStore = create<BadgeState>()((set) => {
     logoColor,
     rightSideColor,
     link,
-  } = defaultValues;
+  } = defaultValues[randomIndex];
 
   const badgeUrl = buildUrl({
     badgeStyle,

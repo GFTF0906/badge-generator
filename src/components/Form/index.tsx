@@ -1,19 +1,17 @@
 import { useEffect } from 'react';
-import { SubmitHandler } from 'react-hook-form';
-
-import { useBadgeStore } from '../../store/useBadgeStore';
 
 import { Button } from '../Button';
-import { LabelInputBox } from './LabelInputBox';
-import { LabelSelectBox } from './LabelSelectBox';
 
+import { SubmitHandler } from 'react-hook-form';
 import { defaultValues } from '../../constants/defaultBadgeValues';
 import { setFormData } from '../../helper/setFormData';
 import { useBadgeForm } from '../../hooks/useBadgeForm';
+import { useBadgeStore } from '../../store/useBadgeStore';
 import { useFormDataStore } from '../../store/useFormDataStore';
 import { useRandomIndexStore } from '../../store/useRandomIndexStore';
 import { TFormSchema } from '../../types/FormSchemaType';
 import { buildUrl } from '../../utils/buildUrl';
+import { Inputs } from './Inputs';
 
 export const FormNewGenerateBadge = () => {
   const formDataFromStore = useFormDataStore((state) => state.formData);
@@ -22,7 +20,7 @@ export const FormNewGenerateBadge = () => {
   const setFormDataFromStore = useFormDataStore((state) => state.setFormData);
   const setBadgeUrl = useBadgeStore((state) => state.setBadgeUrl);
 
-  const { register, handleSubmit, errors, setValue } = useBadgeForm();
+  const { errors, register, handleSubmit, setValue } = useBadgeForm();
 
   const onSubmit: SubmitHandler<TFormSchema> = (data) => {
     setFormDataFromStore(data);
@@ -62,59 +60,9 @@ export const FormNewGenerateBadge = () => {
   return (
     <section className="rounded border-2 border-gray-400 bg-gray-100 p-6 text-black shadow-2xl shadow-[#b1a1be3a]">
       <form onSubmit={handleSubmit(onSubmit)}>
-        <section className="sm:grid sm:grid-cols-2 sm:gap-12">
-          <section>
-            <LabelInputBox
-              inputID="iconName"
-              inputType="text"
-              labelText="Icon Name"
-              register={register}
-              errorMessage={errors['iconName']?.message ?? ''}
-            />
-            <LabelInputBox
-              inputID="badgeText"
-              inputType="text"
-              labelText="Badge Text"
-              register={register}
-              errorMessage={errors['badgeText']?.message ?? ''}
-            />
-            <LabelInputBox
-              inputID="link"
-              inputType="text"
-              labelText="Badge redirect link"
-              register={register}
-              errorMessage={errors['link']?.message ?? ''}
-            />
-          </section>
-          <section>
-            <LabelInputBox
-              inputID="logoColor"
-              inputType="color"
-              labelText="Logo Color"
-              register={register}
-              errorMessage={errors['logoColor']?.message ?? ''}
-            />
-            <LabelInputBox
-              inputID="leftSideColor"
-              inputType="color"
-              labelText="Left Side Color"
-              register={register}
-              errorMessage={errors['leftSideColor']?.message ?? ''}
-            />
-            <LabelInputBox
-              inputID="rightSideColor"
-              inputType="color"
-              labelText="Right Side Color"
-              register={register}
-              errorMessage={errors['rightSideColor']?.message ?? ''}
-            />
-          </section>
-        </section>
-        <LabelSelectBox
-          selectID="badgeStyle"
-          labelText="Badge Style"
+        <Inputs
           register={register}
-          errorMessage={errors['badgeStyle']?.message ?? ''}
+          errors={errors}
         />
         <Button
           text="Generate"

@@ -9,10 +9,12 @@ export const Button = ({
   onClickFunction,
   tooltip,
   onMouseEnter,
+  isCopyButton,
 }: TElementWithContent & {
   tooltip?: JSX.Element;
   onClickFunction?: MouseEventHandler<HTMLButtonElement>;
   onMouseEnter?: MouseEventHandler<HTMLButtonElement>;
+  isCopyButton: boolean;
 }) => {
   const setIsHovered = useBadgeActionsStore((state) => state.setIsHovered);
 
@@ -21,7 +23,8 @@ export const Button = ({
       className={className}
       onMouseEnter={onMouseEnter}
       onClick={(e) => {
-        setIsHovered();
+        isCopyButton ? setIsHovered() : '';
+
         onClickFunction?.(e);
       }}
     >

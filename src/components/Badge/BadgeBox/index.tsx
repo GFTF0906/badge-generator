@@ -35,6 +35,7 @@ export const BadgeBox = () => {
         icon={<Copy />}
         onMouseEnter={setIsHovered}
         onClickFunction={() => copyToClipboard(typeOfCopiedText)}
+        isCopyButton={true}
         className="sm:absolute sm:right-2 sm:top-2"
       />
 

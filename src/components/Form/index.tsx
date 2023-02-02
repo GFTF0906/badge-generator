@@ -66,6 +66,7 @@ export const FormNewGenerateBadge = () => {
         />
         <Button
           text="Generate"
+          isCopyButton={false}
           className="mt-12 w-full border-2 border-[#cead1a] bg-[#F9DC5C] font-semibold transition-all hover:border-opacity-70 hover:bg-opacity-90"
         />
       </form>

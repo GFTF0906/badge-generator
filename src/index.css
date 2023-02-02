@@ -5,22 +5,22 @@
 @tailwind utilities;
 
 body {
-  @apply bg-[#35184d] sm:min-h-screen sm:flex sm:justify-center text-[#F5F5F5] sm:bg-gradient-to-b sm:from-slate-900 sm:via-[#35184d] sm:to-slate-900 font-Inter;
+  @apply flex items-center justify-center bg-[#35184d] p-12 font-Inter text-[#F5F5F5] sm:min-h-screen sm:bg-gradient-to-b sm:from-slate-900 sm:via-[#35184d] sm:to-slate-900 sm:p-8 lg:p-4;
 }
 
 input,
 select {
-  @apply text-black border-2 border-[#d1cece];
+  @apply border-2 border-[#d1cece] text-black;
 }
 
 input,
 select,
 button {
-  @apply p-[5px] rounded;
+  @apply rounded p-[5px];
 }
 
 input[type='color'] {
-  @apply appearance-none w-10 h-10 border-none cursor-pointer bg-transparent;
+  @apply h-10 w-10 cursor-pointer appearance-none border-none bg-transparent;
 }
 
 input[type='color']::-webkit-color-swatch-wrapper {
@@ -32,7 +32,7 @@ input[type='color']::-webkit-color-swatch {
 }
 
 select option {
-  @apply appearance-none text-[#F5F5F5] bg-[#35184d];
+  @apply appearance-none bg-[#35184d] text-[#F5F5F5];
 }
 
 select::-ms-expand {

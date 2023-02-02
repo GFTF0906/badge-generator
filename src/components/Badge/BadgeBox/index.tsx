@@ -23,7 +23,7 @@ export const BadgeBox = () => {
       : '';
 
   return (
-    <section className="flex items-center gap-4">
+    <section className="flex items-center gap-4 p-6 sm:p-0">
       <Button
         tooltip={
           <Tooltip
